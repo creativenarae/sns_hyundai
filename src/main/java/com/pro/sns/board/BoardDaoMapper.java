@@ -60,4 +60,10 @@ public interface BoardDaoMapper {
 	void boardRepInsert(BoardRep br);
 	void boardRepInsert_backup(BoardRep br);
 	BoardRep selectByRepNum(int num);
+	
+	String sysDate();
+	int reportMakeNum();
+	void reportInsert(Report r);
+	ArrayList<Report> reportList(String reporter);
+	Report selectByBoard_Num(int board_num);
 }

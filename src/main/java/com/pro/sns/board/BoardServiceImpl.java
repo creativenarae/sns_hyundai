@@ -152,6 +152,53 @@ public class BoardServiceImpl implements BoardService{
 		dao.boardUpdate(b);
 		dao.boardUpdate_backup(b);
 	}
+	
+	@Override
+	public String sysDate() {
+		// TODO Auto-generated method stub
+		dao = sqlSession.getMapper(BoardDaoMapper.class);
+		return dao.sysDate();
+	}
+
+	@Override
+	public void reportInsert(Report r) {
+		// TODO Auto-generated method stub
+		dao = sqlSession.getMapper(BoardDaoMapper.class);
+		dao.reportInsert(r);
+	}
+
+	@Override
+	public int reportMakeNum() {
+		// TODO Auto-generated method stub
+		dao = sqlSession.getMapper(BoardDaoMapper.class);
+		return dao.reportMakeNum();
+	}
+	
+	@Override
+	public ArrayList<Report> reportList(String reporter) {
+		// TODO Auto-generated method stub
+		dao = sqlSession.getMapper(BoardDaoMapper.class);
+		return dao.reportList(reporter);
+	}
+
+	@Override
+	public boolean reportCheck(int board_num) {
+		// TODO Auto-generated method stub
+		dao = sqlSession.getMapper(BoardDaoMapper.class);
+		Report r = dao.selectByBoard_Num(board_num);
+		System.out.println(r);
+		if (r != null) {// 사용불가
+			return false;
+		}
+		return true;
+	}
+
+	@Override
+	public Report selectByBoard_Num(int board_num) {
+		// TODO Auto-generated method stub
+		dao = sqlSession.getMapper(BoardDaoMapper.class);
+		return dao.selectByBoard_Num(board_num);
+	}
 
 
 }

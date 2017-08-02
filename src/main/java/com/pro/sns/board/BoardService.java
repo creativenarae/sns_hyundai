@@ -48,6 +48,13 @@ public interface BoardService {
 	 * @param b
 	 */
 	void boardUpdate(Board b);
+	
+	String sysDate();
+	void reportInsert(Report r);
+	int reportMakeNum();
+	ArrayList<Report> reportList(String reporter);
+	boolean reportCheck(int board_num);
+	Report selectByBoard_Num(int board_num);
 
 }
 	

@@ -10,11 +10,7 @@
 <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/index.css?ver=7">
 <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
 <script src="${pageContext.request.contextPath }/resources/js/index.js?ver=26"></script>
-<script type="text/javascript">
-	
-
-
-</script>
+<script type="text/javascript" src = "${pageContext.request.contextPath }/resources/js/report.js"></script>
 </head>
 <body>
 
@@ -121,7 +117,7 @@
 			
 			<ul class="sub">
 					<li><a href="${pageContext.request.contextPath}/member/block.do?target=${totalList.board.writer}" class = "block_user">차단하기</a></li>
-					<li><a href="${pageContext.request.contextPath}/board/report.do?target=${totalList.board.writer}" class = "report_user">신고하기</a></li>
+					<li><a onclick = "reportCheck(${totalList.board.num}, '${pageContext.request.contextPath}/board/reportCheck.do')" href="${pageContext.request.contextPath}/board/report.do?reporter=${member.id}&board_num=${totalList.board.num}&board_rep_num=0" class = "report_user" id="report">신고하기</a></li> 
 					<li><a class = "friendRequest_user">친구요청</a></li>	
 					<c:choose>
 					<c:when test="${sessionScope.member.id != null && sessionScope.member.id eq totalList.board.writer}">

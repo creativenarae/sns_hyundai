@@ -31,6 +31,28 @@
 		<result column="category" property="category" />
 		<result column="good_count" property="good_count" />
 	</resultMap>
+	
+	<resultMap type="com.pro.sns.board.Report" id="reportResult">
+	<id column="num" property="num"/>
+	<result column="reporter" property="reporter"/>
+	<result column="report_date" property="report_date"/>
+	<result column="admin_response_comment" property="admin_response_comment"/>
+	<result column="request_completed_date" property="request_completed_date"/>
+	<result column="board_num" property="board_num"/>
+	<result column="board_rep_num" property="board_rep_num"/>
+	<association property="member" javaType="com.pro.sns.member.Member">
+			<id column="id" property="id"/>
+			<result column="num" property="num"/>
+		</association>
+		<association property="board" javaType="com.pro.sns.board.Board">
+			<id column="num" property="num"/>
+			<result column="num" property="num"/>
+		</association>
+		<association property="boardRep" javaType="com.pro.sns.boardRep.BoardRep">
+			<id column="num" property="num"/>
+			<result column="num" property="num"/>
+		</association>
+	</resultMap>
 
 	<!-- 로그인후 전체 출력 프로필사진도 얻어와야함 -->
 	<select id="boardSelectAllLoginUserOnly" parameterType="String"
@@ -119,6 +141,46 @@
 	<insert id="boardInsert_backup" parameterType="com.pro.sns.board.Board">
 	insert into sns_board_backup values(#{num, jdbcType=INTEGER}, #{writer, jdbcType=VARCHAR}, #{path, jdbcType=VARCHAR}, #{content, jdbcType=VARCHAR}, sysdate, #{type, jdbcType=INTEGER}, #{category, jdbcType=VARCHAR}, #{good_count, jdbcType=INTEGER})
 	</insert>
+	
+	<update id="boardUpdate" parameterType="com.pro.sns.board.Board">
+	update sns_board 
+	set 
+	 path=#{path},
+	  content=#{content},
+	   board_date=sysdate,
+	    type=#{type},
+	     category=#{category},
+	      good_count=#{good_count}
+	       where num= #{num}
+	</update>
+	
+	<update id="boardUpdate_backup" parameterType="com.pro.sns.board.Board">
+	update sns_board_backup 
+	set 
+	 path=#{path},
+	  content=#{content},
+	   board_date=sysdate,
+	    type=#{type},
+	     category=#{category},
+	      good_count=#{good_count}
+	       where num= #{num}
+	</update>
+	<select id="selectByNum" parameterType="java.lang.Integer" 
+	resultMap="boardResult">
+		select * from sns_board where num=#{num}
+	</select> 
+	<delete id="deleteBoardByNum" parameterType="com.pro.sns.board.Board">
+	delete sns_board where num=#{num}
+	</delete>
+	<select id="sysDate" resultType="string">
+	select to_char(sysdate, 'YY-MM-DD HH24:MI') from dual
+	</select>
+	<insert id="reportInsert" parameterType="com.pro.sns.board.Report">
+	insert into sns_report values(#{num}, #{reporter}, #{report_date}, #{admin_response_comment, jdbcType=VARCHAR}, #{request_completed_date, jdbcType=VARCHAR}, #{board_num}, #{board_rep_num, jdbcType=INTEGER})
+	</insert>
+	<select id="reportMakeNum" resultType="int">
+	select seq_sns_report.nextval from dual
+	</select>
 
 
 </mapper>

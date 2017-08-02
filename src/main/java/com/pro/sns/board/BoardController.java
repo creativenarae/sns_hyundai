@@ -98,4 +98,13 @@ public class BoardController {
 		return "redirect:/board/totalListLoginUserOnly.do";
 	}
 	
+	@RequestMapping(value="/board/report.do")
+	public String reportInsert(Report r) {
+		int num = bService.reportMakeNum();
+		r.setNum(num);
+		r.setReport_date(bService.sysDate());
+		bService.reportInsert(r);
+		return "redirect:/board/totalListLoginUserOnly.do";
+	}
+	
 }
