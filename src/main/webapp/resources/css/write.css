@@ -1,0 +1,111 @@
+html, body {
+	width: 100%; 
+	height: 100%; 
+	margin: 0; 
+	padding: 0; 
+	background-color: #f4f4f4;
+}
+
+div, input, form {
+ margin: 0; 
+ padding: 0;
+}
+/*header-�긽�떒諛� �떆�옉*/
+h1{
+   text-align:center;
+   font-size:18px;
+   line-height:55px;
+   color:#FFF;
+   font-weight:100;
+}
+header{
+   width: 100%;
+   height: 55px;
+   background-color: #37b1bc;
+   position: relative;
+   top: 0;
+   left: 0;
+}
+
+.wrap {
+	width:900px;
+	clear:both;
+	margin:auto; 
+	overflow: hidden;  
+   border:hidden;
+   padding-left:50px;
+   padding-top: 100px; 
+} 
+
+.clearFix {
+	overflow: hidden;
+	width: 900px;
+	height: 420px;
+	padding-top: 25px;
+	margin: auto;
+}
+
+.box1 {
+	width:90%;
+	height:380px;
+	padding-top: 10px;
+	padding-right: 10px;
+	padding-bottom: 10px;
+}
+
+.col1 {
+	background: #fcfcfc;
+}
+
+.sideL {
+	float: left; 
+	width: 30%;
+	height: 420px;
+	}
+	
+.box1 span[id="imagePreview"]{
+   width:100%;
+   height:250px;
+   border:#CCC solid 1px;
+   text-align:center center;
+	padding:0;
+   }
+
+.sideR {
+	float: right; 
+	width: 70%;
+}
+
+textarea{
+   width:70%;
+   height:420px;
+   background:#ffffff;
+   color:#666666;
+   font-size:14px;
+   padding: 15px;
+   margin-bottom: 20px;
+}
+
+.write_btn {
+}
+   
+.write_btn input[type="submit"] {
+	width:110px;
+	height:50px;
+	background:#23cddc;
+	border:none;
+	color:#FFF;
+	font-size:18px;
+	font-weight:bold;
+	float: right;
+	cursor: pointer;
+	clear: both;
+	padding: 20px 50px;
+	background: #fcfcfc; 
+}  
+
+   
+   
+   
+   
+   
