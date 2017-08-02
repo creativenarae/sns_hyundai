@@ -30,7 +30,8 @@ public class BoardController {
 		
 		int numberForPrimaryImage = bService.boardMakeNum();
 		String fileName = b.getFile().getOriginalFilename();
-		String path = "C:\\Users\\Helo\\Desktop\\dw89z_SNS_V2\\sns_project\\src\\main\\webapp\\resources\\images\\board_img\\";
+		String path = "C:\\sns_hyundai\\sns_project\\src\\main\\webapp\\resources\\images\\board_img\\";
+		
 		File file = new File(path + numberForPrimaryImage + fileName);
 		
 		try {
@@ -77,7 +78,7 @@ public class BoardController {
 		System.out.println(b);
 		int numberForPrimaryImage = bService.boardMakeNum();
 		String fileName = b.getFile().getOriginalFilename();
-		String path = "C:\\Users\\Helo\\Desktop\\dw89z_SNS_V2\\sns_project\\src\\main\\webapp\\resources\\images\\board_img\\";
+		String path = "C:\\sns_hyundai\\sns_project\\src\\main\\webapp\\resources\\images\\board_img\\";
 		File file = new File(path + numberForPrimaryImage + fileName);
 		
 		try {
