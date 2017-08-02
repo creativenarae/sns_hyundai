@@ -108,7 +108,7 @@ public class MemberController {
 			return "member/join";
 		}
 
-		String path = "C:\\dw89z_SNS_V2\\sns_project\\src\\main\\webapp\\resources\\images\\member_img\\";
+		String path = "C:\\Users\\Helo\\Desktop\\dw89z_SNS_V2\\sns_project\\src\\main\\webapp\\resources\\images\\member_img\\";
 		
 		
 		String fileName = m.getFile().getOriginalFilename();
@@ -147,7 +147,7 @@ public class MemberController {
 		File selectedDir = new File(oldPath);
 		selectedDir.delete();// 지워진다
 
-		String newPath = "C:\\dw89z_SNS_V2\\sns_project\\src\\main\\webapp\\resources\\images\\member_img\\";		
+		String newPath = "C:\\Users\\Helo\\Desktop\\dw89z_SNS_V2\\sns_project\\src\\main\\webapp\\resources\\images\\member_img\\";		
 		String fileName = m.getFile().getOriginalFilename();
 		File oldFile = new File(newPath + fileName);
 		File newFile = new File(newPath + m.getId() + ".jpg");

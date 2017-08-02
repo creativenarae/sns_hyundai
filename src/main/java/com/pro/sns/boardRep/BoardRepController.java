@@ -5,6 +5,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -13,25 +15,34 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.pro.sns.member.Member;
+
 @Controller
 public class BoardRepController {
 	
 	@Resource(name = "boardRepService")
 	private BoardRepService brService;
 	
-	@RequestMapping(value="/boardRep/writeRep.do")
+	@RequestMapping(value="/boardRep/writeRep.do", method=RequestMethod.POST,produces="application/json")
 	@ResponseBody
-	public BoardRep boardRepInsert(@RequestBody HashMap<String, Object> params) {
+	public BoardRep boardRepInsert(@RequestBody Map<String, Object> params, HttpServletRequest req) {
+		HttpSession session = req.getSession(false);
+		Member m = (Member) session.getAttribute("member");
+		String id = m.getId();
+		int rep_num = brService.boardRepMakeNum();
+		int board_num = Integer.parseInt(params.get("board_num").toString());
+		int rep_type = Integer.parseInt(params.get("rep_type").toString());
+		String content = params.get("content").toString();
+		
 		BoardRep boardRep = new BoardRep();
-		System.out.println("board_num : "+params.get("board_num"));
-//		brService.boardRepInsert(params);
-//		String id = params.get("writer").toString();
-//		System.out.println("id : "+id);
-//		System.out.println(params);
-//		int num = brService.boardRepMakeNum();
-//		br.setNum(num);
-//		brService.boardRepInsert(br);
-//		return "redirect:/board/totalListLoginUserOnly.do";
+		boardRep.setNum(rep_num);
+		boardRep.setBoard_num(board_num);
+		boardRep.setContent(content);
+		boardRep.setWriter(id);
+		boardRep.setType(rep_type);
+		
+		brService.boardRepInsert(boardRep);
+		System.out.println("insert boardRep : "+boardRep);
 		return boardRep;
 	}
 	

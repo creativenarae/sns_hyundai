@@ -51,7 +51,6 @@ public class BoardRepServiceImpl implements BoardRepService{
 		dao_rep.deleteRep(num);
 	}
 	
-
 	@Override
 	public BoardRep selectByRepNum(int num) {
 		// TODO Auto-generated method stub
@@ -65,6 +64,12 @@ public class BoardRepServiceImpl implements BoardRepService{
 		return dao_rep.selectRepsByBoardNum(num);
 	}
 
+	@Override
+	public int boardRepMakeNum() {
+		// TODO Auto-generated method stub
+		dao_rep = sqlSession.getMapper(BoardRepDaoMapper.class);
+		return dao_rep.boardRepMakeNum();
+	}
 
 	
 

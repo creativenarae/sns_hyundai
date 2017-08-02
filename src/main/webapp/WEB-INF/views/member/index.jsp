@@ -7,18 +7,13 @@
 <meta charset="utf-8">
 <title>sns</title>
 <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/index_reset.css">
-<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/index.css?ver=6">
+<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/index.css?ver=7">
 <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
-<script src="${pageContext.request.contextPath }/resources/js/index.js?ver=18"></script>
+<script src="${pageContext.request.contextPath }/resources/js/index.js?ver=26"></script>
 <script type="text/javascript">
 	
-	function check(form){
-		var type = "";
-		if(form.type.checked){
-// 			type += form.type.value;
-		} 
-	}
-	
+
+
 </script>
 </head>
 <body>
@@ -161,7 +156,7 @@
 			                     <li>${reps.writer } : ${reps.content }</li>
 				                     <c:if test='${sessionScope.member.id == reps.writer}'>
 				                     	<li>
-				                     		<input type="button" class="delete_rep" value="delete" />
+				                     		<input type="button" class="delete_rep" value = "delete" />
 				                     		<input type="hidden" class="rep_num" value="${reps.num }"/>
 				                     		<input type="hidden" class="board_num" value="${totalList.board.num}"/>
 				                     		<input type="hidden" class="member_id" value="${sessionScope.member.id}"/>
@@ -170,7 +165,6 @@
 				                     </c:if>
 <%-- 			                     	<li><input type="button" value="report" onclick="report_rep('${reps}')"/></li> --%>
 
-			                  
 			            </c:if>
 			           </c:forEach>
 		           </ul>
@@ -179,11 +173,12 @@
 			<!-- 작성 부분 -->
 				<form method="post" id="rep_submit_${totalList.board.num }" name="repForm" >
 	        		<fieldset>
-	        			<input type="hidden" name="writer" class="writer" value="${member.id}"/>
-	        			<input type="hidden" name="board_num" class="board_num" value="${totalList.board.num }"/>
+<%-- 	        			<input type="hidden" name="writer" class="writer" value="${member.id}"/> --%>
+<%-- 	        			<input type="hidden" name="board_num" class="board_num" value="${totalList.board.num }"/> --%>
 	                 	<input type="checkbox" name="checkbox"/>비밀댓글
-	                 	<input type="text" placeholder="댓글을 입력하세요..." name="content" id="private_rep">
-	                    <input type="submit" value="" class="submit" onclick="check(this.form);">
+	                 	<input type="text" placeholder="댓글을 입력하세요..." name="content"  class="content" id="private_rep">
+<%-- 	                    <input type="button" class="write_rep" onclick="writerep('${member.id }', '${totalList.board.num }', this.form.content.value)"/> --%>
+						<input type="button" class="write_rep" onclick="write_rep('${totalList.board.num}', '${member.id }', this.form.content.value)"/>
 	           		</fieldset>
 	           	</form>
 				

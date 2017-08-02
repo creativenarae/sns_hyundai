@@ -14,6 +14,7 @@ public interface BoardRepService {
 			//로그인하지않았을경우의 댓글출력
 			ArrayList<BoardRep> boardRepSelectAllNoLoginUserOnly(int boardNum);
 		
+		int boardRepMakeNum();
 		BoardRep selectByRepNum(int num);
 		void boardRepInsert(BoardRep br);
 		void deleteRep(int num);

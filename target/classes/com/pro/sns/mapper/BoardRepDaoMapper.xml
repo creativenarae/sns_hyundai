@@ -40,11 +40,12 @@
 	
 	<insert id="boardRepInsert" parameterType="com.pro.sns.boardRep.BoardRep">
 		insert into sns_board_rep 
-		values(seq_sns_board_rep.nextval, #{writer}, #{content}, sysdate, #{board_num}, #{type})
+		values(#{num}, #{writer}, #{content}, sysdate, #{board_num}, #{type})
 	</insert>
 	
 	<insert id="boardRepInsert_backup" parameterType="com.pro.sns.boardRep.BoardRep">
-		insert into sns_board_rep_backup values(#{num}, #{writer}, #{content}, sysdate, #{board_num}, #{type})
+		insert into sns_board_rep_backup 
+		values(#{num}, #{writer}, #{content}, sysdate, #{board_num}, #{type})
 	</insert>
 	
 	<delete id="deleteRep" parameterType="java.lang.Integer">
@@ -57,6 +58,14 @@
 		select *
 		from sns_board_rep
 		where board_num=#{board_num}
+	</select>
+	
+	<select id="boardMakeNum" resultType="java.lang.Integer">
+		select seq_sns_board_num.nextval from dual
+	</select>
+	
+	<select id="boardRepMakeNum" resultType="int">
+		select seq_sns_board_rep.nextval from dual
 	</select>
 
 </mapper>

@@ -13,7 +13,7 @@ public interface BoardRepDaoMapper {
 	//로그인하지않았을경우의 댓글출력
 	ArrayList<BoardRep> boardRepSelectAllNoLoginUserOnly(int boardNum);
 	
-	
+	int boardRepMakeNum();
 	void boardRepInsert(BoardRep br);
 	void boardRepInsert_backup(BoardRep br);
 	void deleteRep(int num);
